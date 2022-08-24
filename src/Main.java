@@ -1,18 +1,16 @@
 public class Main {
 
-    //Задание 1. Метод, проверяющий деление и возвращающий остаток
-    public static int checkDivision(int number) {
-        int checkDivision = 0;
-        if (number % 4 == 0 && number % 100 != 0) {
-            checkDivision = 1;
-        } else if (number % 4 == 0 && number % 100 == 0 && number % 400 == 0) {
-            checkDivision = 1;
+    //Задание 1. Метод, проверяющий високосный год или нет
+    private static void printYearInfo(int year) {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+            System.out.println(year + " - високосный год");
+        } else {
+            System.out.println(year + " - не високосный год");
         }
-        return checkDivision;
     }
 
     //Задание 2. Метод, анализирующий год выпука устройства и ОС
-    public static void Version(int year, int OS) {
+    private static void selectVersion(int year, int OS) {
         switch (OS) {
             case 0:
                 if (year < 2015) {
@@ -22,7 +20,6 @@ public class Main {
                 }
                 break;
             case 1:
-                System.out.print("Установите ");
                 if (year < 2015) {
                     System.out.println("Установите облегченную версию приложения для Android по ссылке");
                 } else {
@@ -36,7 +33,7 @@ public class Main {
     }
 
     //Задание 3. Метод, анализирующий время доставки
-    public static int day(int number) {
+    private static int calculationDay(int number) {
         int day = 0;
         //расчет количества дней
         if (number <= 0) {
@@ -55,23 +52,19 @@ public class Main {
         // Задание 1
         System.out.println("Задание 1:");
         int year = 2020;
-        int total = checkDivision(year);
-        if (total == 0) {
-            System.out.println(year + " - не високосный год");
-        } else {
-            System.out.println(year + " - високосный год");
-        }
+        printYearInfo(year);
+
 
         // Задание 2
         System.out.println("Задание 2:");
         byte clientOS = 0;
         int clientDeviceYear = 2022;
-        Version(clientDeviceYear, clientOS);
+        selectVersion(clientDeviceYear, clientOS);
 
         // Задание 3
         System.out.println("Задание 3:");
         int deliveryDistance = 95;
-        int result = day(deliveryDistance);
+        int result = calculationDay(deliveryDistance);
         if (result > 0) {
             System.out.println("Потребуется дней: " + result);
         } else if (result == 0) {
